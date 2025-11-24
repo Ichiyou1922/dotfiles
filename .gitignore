@@ -1,0 +1,6 @@
+echo ".cache/" >> .gitignore
+echo ".DS_Store" >> .gitignore
+echo "*.swp" >> .gitignore
+echo ".netrwhist" >> .gitignore
+echo ".git/" >> .gitignore
+echo ".dein" >> .gitignore

@@ -85,33 +85,6 @@ nnoremap sv :<C-u>vs<CR><C-w>l
 
 " plugin manager ---------------------------------------------
 
-" 4章で紹介
-
-" ------------------------------------------------------------
-
-" カラースキーム(任意です)
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-
-syntax on
-
-" InsertモードでEmacsのキーバインドを使えるようにする
-imap <C-p> <Up>
-imap <C-n> <Down>
-imap <C-b> <Left>
-imap <C-f> <Right>
-imap <C-a> <C-o>:call <SID>home()<CR>
-imap <C-e> <End>
-imap <C-d> <Del>
-imap <C-h> <BS>
-imap <C-k> <C-r>=<SID>kill()<CR>
-
 " plugin manager ---------------------------------------------
 if &compatible
   set nocompatible
@@ -153,6 +126,28 @@ endif
 
 " ------------------------------------------------------------
 
+
+" ------------------------------------------------------------
+
+" カラースキーム(任意です)
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+syntax on
+
+" , キーで次タブのバッファを表示
+nnoremap <silent> , :bprev<CR>
+" . キーで前タブのバッファを表示
+nnoremap <silent> . :bnext<CR>
+" bdで現在のバッファを削除
+nnoremap bd :bd<CR>
+
 " <Leader>キー
 let mapleader = " "
 
@@ -163,50 +158,23 @@ nnoremap sh <C-w>h
 nnoremap ss :<C-u>sp<CR><C-w>j
 nnoremap sv :<C-u>vs<CR><C-w>l
 
-" ---------------------------------------------------------
-" LSP (Language Server Protocol) プラグイン
-" ---------------------------------------------------------
-" LSPクライアント本体
-call dein#add('prabirshrestha/vim-lsp')
-
-" 言語サーバーの自動インストール・管理 (:LspInstallServer用)
-call dein#add('mattn/vim-lsp-settings')
-
-" 補完エンジン (UI担当)
-call dein#add('prabirshrestha/asyncomplete.vim')
-
-" LSPと補完エンジンをつなぐブリッジ
-call dein#add('prabirshrestha/asyncomplete-lsp.vim')
-
-
-" ---------------------------------------------------------
-" LSP 設定 & キーマッピング
-" ---------------------------------------------------------
+" <LSP-Setting>"
 function! s:on_lsp_buffer_enabled() abort
-    " オムニ補完をLSPに任せる
     setlocal omnifunc=lsp#complete
-    
-    " エラー等のサインを表示する列を常に表示（画面ガタつき防止）
     setlocal signcolumn=yes
-    
-    " タグジャンプもLSPを使う
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
 
-    " キーマッピング（定義ジャンプなど）
-    " gd: 定義元へジャンプ (Go to Definition)
+    " キーマッピングの例（好みに合わせて変更可）
     nmap <buffer> gd <plug>(lsp-definition)
-    " gr: 参照元を一覧表示 (Go to References)
     nmap <buffer> gr <plug>(lsp-references)
-    " gi: 実装へジャンプ (Go to Implementation)
     nmap <buffer> gi <plug>(lsp-implementation)
-    " F2: 変数名などのリネーム (Rename)
     nmap <buffer> <f2> <plug>(lsp-rename)
-    " K: カーソル下のドキュメント/型情報を表示 (Hover)
     nmap <buffer> K <plug>(lsp-hover)
 endfunction
 
 augroup lsp_install
     au!
-    " LSPが有効になったバッファで上記の設定関数を呼び出す
+    " LSPが有効になったバッファで上記の設定をロード
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+

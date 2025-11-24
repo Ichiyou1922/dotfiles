@@ -126,8 +126,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
 source /opt/ros/humble/setup.bash
-source ~/src/GIT/ros2_ws/install/setup.bash
-source ~/src/GIT/ros2_ws/install/local_setup.bash
+source home/src/GIT/ros2_ws/install/setup.bash
+source home/src/GIT/ros2_ws/install/local_setup.bash
 
 # Go-setting
 export GOROOT=/usr/local/go

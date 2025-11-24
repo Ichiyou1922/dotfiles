@@ -130,16 +130,13 @@ endif
 " ------------------------------------------------------------
 
 " カラースキーム(任意です)
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+if (has("termuicolors"))
+  set termuicolors
 endif
-
-syntax on
+let g:lightline = { 'colorscheme': 'tender' }
+let g:airline_thema = 'tender'
+syntax enable
+colorscheme tender
 
 " , キーで次タブのバッファを表示
 nnoremap <silent> , :bprev<CR>

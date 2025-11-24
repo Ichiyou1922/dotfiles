@@ -146,10 +146,8 @@ source ~/robosys/ros2_ws/install/local_setup.bash
 
 # Go-setting
 export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.local/share/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
 
 # fzf-settinig
 bind '"\C-g": "\C-u\C-kcd $(ghq list -p | fzf)\e\C-e\er\C-m"'

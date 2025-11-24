@@ -124,25 +124,10 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PATH="$HOME/.local/bin:$PATH"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/yoichi/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/yoichi/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/yoichi/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/yoichi/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
 source /opt/ros/humble/setup.bash
-source ~/robosys/ros2_ws/install/setup.bash
-source ~/robosys/ros2_ws/install/local_setup.bash
+source ~/src/GIT/ros2_ws/install/setup.bash
+source ~/src/GIT/ros2_ws/install/local_setup.bash
 
 # Go-setting
 export GOROOT=/usr/local/go

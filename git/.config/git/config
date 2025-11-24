@@ -1,0 +1,9 @@
+[user]
+	name = Ichiyou1922
+	email = mogi2fruits.kazu@gmail.com
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[ghq]
+	root = /home/yoichi/src

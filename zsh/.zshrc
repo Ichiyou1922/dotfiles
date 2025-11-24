@@ -12,7 +12,11 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 alias t='tmux'
-export GOROOT="/usr/local/go"
-export PATH="$GOROOT/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
+
+# Go-setting
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/.local/share/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# tex-setting
+export TEXMFHOME="$HOME/.local/share/texmf"

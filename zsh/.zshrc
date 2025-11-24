@@ -19,5 +19,14 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # tex-setting
 export TEXMFHOME="$HOME/.local/share/texmf"
 
-# fzf-setting
-bind '"\C-g": "\C-u\C-kcd $(ghq list -p | fzf)\e\C-e\er\C-m"'
+# --- ghq + fzf (Zsh用) ---
+function ghq-fzf() {
+  local src=$(ghq list | fzf --preview "ls -laTp $(ghq root)/{} | tail -n+2 | head -n 20")
+  if [ -n "$src" ]; then
+    BUFFER="cd $(ghq root)/$src"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N ghq-fzf
+bindkey '^g' ghq-fzf

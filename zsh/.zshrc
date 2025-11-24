@@ -18,3 +18,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # tex-setting
 export TEXMFHOME="$HOME/.local/share/texmf"
+
+# fzf-setting
+bind '"\C-g": "\C-u\C-kcd $(ghq list -p | fzf)\e\C-e\er\C-m"'

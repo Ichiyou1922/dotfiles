@@ -110,7 +110,7 @@ function mkjig() {
     fi
 
     # 3. 治具A（アブダクション）の生成
-    cat << 'EOF' > "$target_dir/01_Abduction_Jig.md"
+    cat << 'EOF' > "$target_dir/Abduction_Jig.md"
 # 【治具A：推論の骨組み構築（アブダクション強制）】
 > **目的：** 目の前の事象から，もっともらしい仮説を導き出す．
 
@@ -136,7 +136,7 @@ function mkjig() {
 EOF
 
     # 4. 治具B（抽象化）の生成
-    cat << 'EOF' > "$target_dir/02_Abstraction_Jig.md"
+    cat << 'EOF' > "$target_dir/Abstraction_Jig.md"
 # 【治具B：本質の抽出（抽象化強制）】
 > **目的：** 具体的な問題から構造を抜き出し，他の問題に応用可能な形にする．
 
@@ -160,7 +160,7 @@ EOF
 EOF
 
     # 5. 治具C（検証）の生成
-    cat << 'EOF' > "$target_dir/03_Verification_Jig.md"
+    cat << 'EOF' > "$target_dir/Verification_Jig.md"
 # 【治具C：論理の強固化（反証強制）】
 > **目的：** 導き出した結論を破壊テストし，論理的飛躍を防ぐ．
 
@@ -181,8 +181,8 @@ EOF
    - 修正後の主張：
 EOF
 
-    echo "思考治具の配備完了．以下のコマンドで思考を開始せよ："
-    echo "cd $target_dir"
+    echo "思考治具の配備完了．思考を開始せよ："
+    cd $target_dir
 }
 
 # Powerlevel10k configuration

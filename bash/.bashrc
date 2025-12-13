@@ -124,11 +124,6 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PATH="$HOME/.local/bin:$PATH"
 
-export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
-source /opt/ros/humble/setup.bash
-source home/src/GIT/ros2_ws/install/setup.bash
-source home/src/GIT/ros2_ws/install/local_setup.bash
-
 # Go-setting
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/.local/share/go
@@ -153,5 +148,7 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
+#ROS2 Setting
+source /opt/ros/humble/setup.bash
+export ROS_LOCALHOST_ONLY=1

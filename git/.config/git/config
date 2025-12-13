@@ -7,3 +7,5 @@
 	defaultBranch = main
 [ghq]
 	root = /home/yoichi/src
+[url "https://"]
+	insteadOf = git://
